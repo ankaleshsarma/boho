@@ -524,6 +524,47 @@
     100% { transform: translate3d(180px, -200px, 80px) rotateY(140deg) rotateX(5deg) rotateZ(-8deg) scale(1.02); box-shadow: 0 28px 70px rgba(92, 61, 46, 0.29); }
   }
 
+  /* ═══ MOBILE FLOAT ANIMATIONS: Gentle bobbing motion ═══ */
+  @keyframes mobile-float-1 {
+    0% { transform: translateY(0px) rotateZ(0deg); }
+    25% { transform: translateY(-15px) rotateZ(2deg); }
+    50% { transform: translateY(-8px) rotateZ(0deg); }
+    75% { transform: translateY(-18px) rotateZ(-2deg); }
+    100% { transform: translateY(0px) rotateZ(0deg); }
+  }
+
+  @keyframes mobile-float-2 {
+    0% { transform: translateY(8px) rotateZ(0deg); }
+    25% { transform: translateY(-12px) rotateZ(-2deg); }
+    50% { transform: translateY(-5px) rotateZ(0deg); }
+    75% { transform: translateY(-15px) rotateZ(2deg); }
+    100% { transform: translateY(8px) rotateZ(0deg); }
+  }
+
+  @keyframes mobile-float-3 {
+    0% { transform: translateY(-5px) rotateZ(0deg); }
+    25% { transform: translateY(-20px) rotateZ(1deg); }
+    50% { transform: translateY(-10px) rotateZ(0deg); }
+    75% { transform: translateY(-22px) rotateZ(-1deg); }
+    100% { transform: translateY(-5px) rotateZ(0deg); }
+  }
+
+  @keyframes mobile-float-4 {
+    0% { transform: translateY(5px) rotateZ(0deg); }
+    25% { transform: translateY(-14px) rotateZ(-2deg); }
+    50% { transform: translateY(-7px) rotateZ(0deg); }
+    75% { transform: translateY(-17px) rotateZ(2deg); }
+    100% { transform: translateY(5px) rotateZ(0deg); }
+  }
+
+  @keyframes mobile-float-5 {
+    0% { transform: translateY(0px) rotateZ(0deg); }
+    25% { transform: translateY(-16px) rotateZ(2deg); }
+    50% { transform: translateY(-9px) rotateZ(0deg); }
+    75% { transform: translateY(-19px) rotateZ(-2deg); }
+    100% { transform: translateY(0px) rotateZ(0deg); }
+  }
+
   /* Decorative blob */
   .hero-blob {
     position: absolute;
@@ -1307,14 +1348,18 @@
     background: var(--mocha);
     color: rgba(250, 246, 240, 0.7);
     padding: 4rem 6rem 2rem;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .footer-top {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    max-width: 100%;
   }
 
   .footer-brand .name {
@@ -1324,6 +1369,8 @@
     color: var(--cream);
     display: block;
     margin-bottom: 0.3rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .footer-brand .sub {
@@ -1333,12 +1380,15 @@
     color: var(--clay);
     display: block;
     margin-bottom: 1rem;
+    word-break: break-word;
   }
 
   .footer-brand p {
     font-size: 0.82rem;
     line-height: 1.7;
     max-width: 260px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .footer-col h4 {
@@ -1347,17 +1397,64 @@
     text-transform: uppercase;
     color: var(--clay);
     margin-bottom: 1.2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-weight: 600;
+    letter-spacing: 0.12em;
   }
 
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul { 
+    list-style: none; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.6rem; 
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-col li {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+  
   .footer-col a {
     text-decoration: none;
     color: rgba(250, 246, 240, 0.6);
     font-size: 0.82rem;
-    transition: color 0.2s;
+    transition: color 0.2s, text-decoration 0.2s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+    max-width: 100%;
+    outline-offset: 2px;
+    line-height: 1.2;
+    padding: 0;
   }
 
-  .footer-col a:hover { color: var(--cream); }
+  @media (max-width: 767px) {
+    .footer-col ul {
+      gap: 0.2rem;
+    }
+  }
+
+  .footer-col a:hover { 
+    color: var(--cream);
+    text-decoration: underline;
+  }
+
+  .footer-col a:focus {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .footer-col a:focus-visible {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+  }
 
   .footer-bottom {
     display: flex;
@@ -1366,11 +1463,17 @@
     padding-top: 1.5rem;
     font-size: 0.72rem;
     color: rgba(250, 246, 240, 0.35);
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .social-links {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   /* ══ CHECK-IN/OUT TIMES ══ */
@@ -1378,6 +1481,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .time-card {
@@ -1386,6 +1491,9 @@
     border: 1px solid rgba(212, 149, 106, 0.2);
     border-radius: 0.8rem;
     transition: all 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .time-card:hover {
@@ -1399,6 +1507,7 @@
     text-transform: uppercase;
     color: var(--clay);
     margin-bottom: 0.4rem;
+    word-break: break-word;
   }
 
   .time-card-time {
@@ -1406,6 +1515,7 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--cream);
+    word-break: break-word;
   }
 
   .social-links {
@@ -1418,10 +1528,25 @@
     color: rgba(250, 246, 240, 0.4);
     font-size: 0.75rem;
     letter-spacing: 0.08em;
-    transition: color 0.2s;
+    transition: color 0.2s, text-decoration 0.2s;
+    outline-offset: 2px;
   }
 
-  .social-links a:hover { color: var(--clay); }
+  .social-links a:hover { 
+    color: var(--clay);
+    text-decoration: underline;
+  }
+
+  .social-links a:focus {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .social-links a:focus-visible {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+  }
 
   /* ══ SCROLL ANIMATIONS ══ */
   .fade-up {
@@ -1475,7 +1600,7 @@
     .hero {
       grid-template-columns: 1fr;
       min-height: auto;
-      padding-top: 5rem;
+      padding-top: 5.5rem;
     }
 
     .hero-left {
@@ -1586,13 +1711,18 @@
     .footer-top {
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    footer {
+      padding: 3rem 2rem 1.5rem;
     }
   }
 
   /* ── MOBILE: below 768px ── */
   @media (max-width: 767px) {
     .nav-inner {
-      padding: 0.8rem 1.2rem;
+      padding: 0.4rem 1.2rem;
       gap: 1rem;
     }
 
@@ -1623,7 +1753,7 @@
 
     .nav-links {
       position: fixed;
-      top: 3.5rem;
+      top: 3rem;
       left: 0;
       right: 0;
       width: 100%;
@@ -1631,18 +1761,21 @@
       flex-direction: column !important;
       background: rgba(250, 246, 240, 0.98);
       backdrop-filter: blur(16px);
-      padding: 1rem;
+      padding: 0;
       gap: 0.5rem;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
-      border-bottom: 1px solid rgba(200, 149, 108, 0.15);
+      visibility: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease, visibility 0.3s ease;
+      border-bottom: none;
       list-style: none;
       z-index: 99;
     }
 
     .nav-links.is-open {
       max-height: 500px;
+      padding: 1rem;
+      visibility: visible;
     }
 
     .nav-links a {
@@ -1665,7 +1798,7 @@
     .hero {
       grid-template-columns: 1fr;
       min-height: auto;
-      padding-top: 4.5rem;
+      padding-top: 6rem;
     }
 
     .hero-left {
@@ -1673,7 +1806,44 @@
     }
 
     .hero-right {
-      display: none;
+      display: flex;
+      min-height: 350px;
+      position: relative;
+    }
+
+    .floating-collage {
+      width: 100%;
+      height: 100%;
+    }
+
+    .float-card-1 {
+      width: 120px !important;
+      height: 160px !important;
+      animation: entrance-1 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-1 8.5s linear infinite 1s !important;
+    }
+
+    .float-card-2 {
+      width: 100px !important;
+      height: 140px !important;
+      animation: entrance-2 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-2 9.2s linear infinite 1.1s !important;
+    }
+
+    .float-card-3 {
+      width: 140px !important;
+      height: 180px !important;
+      animation: entrance-3 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-3 7.8s linear infinite 0.9s !important;
+    }
+
+    .float-card-4 {
+      width: 110px !important;
+      height: 150px !important;
+      animation: entrance-4 1.15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-4 8.8s linear infinite 1.15s !important;
+    }
+
+    .float-card-5 {
+      width: 130px !important;
+      height: 160px !important;
+      animation: entrance-5 1.05s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-5 8.4s linear infinite 1.05s !important;
     }
 
     .hero-eyebrow {
@@ -2023,6 +2193,8 @@
 
     .footer-brand p {
       font-size: 0.75rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     .footer-col h4 {
@@ -2032,6 +2204,15 @@
 
     .footer-col a {
       font-size: 0.75rem;
+      padding: 0.5rem 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 2.5rem 1.5rem 1.5rem;
     }
 
     .checkin-checkout {
@@ -2120,7 +2301,7 @@
   /* ── SMALL MOBILE: below 480px ── */
   @media (max-width: 479px) {
     .nav-inner {
-      padding: 0.6rem 1rem;
+      padding: 0.3rem 1rem;
       gap: 0.8rem;
     }
 
@@ -2144,6 +2325,10 @@
     .nav-cta {
       padding: 0.4rem 1rem;
       font-size: 0.65rem !important;
+    }
+
+    .hero {
+      padding-top: 6.5rem;
     }
 
     .hero-title {
@@ -2402,6 +2587,109 @@
     .btn-book {
       padding: 0.7rem 1.4rem;
       font-size: 0.7rem;
+    }
+
+    /* ── SMALL MOBILE: FOOTER ── */
+    .footer-top {
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .footer-brand .name {
+      font-size: 1.1rem;
+    }
+
+    .footer-brand .sub {
+      font-size: 0.58rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.7rem;
+      max-width: 100%;
+    }
+
+    .footer-col h4 {
+      font-size: 0.58rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col a {
+      font-size: 0.7rem;
+      word-break: break-word;
+    }
+
+    .time-card {
+      padding: 0.7rem 0.9rem;
+    }
+
+    .time-card-label {
+      font-size: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .time-card-time {
+      font-size: 1.1rem;
+    }
+
+    .checkin-checkout {
+      gap: 1rem;
+    }
+
+    .footer-bottom {
+      font-size: 0.65rem;
+      padding-top: 1rem;
+      gap: 1rem;
+    }
+
+    .social-links {
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .social-links a {
+      font-size: 0.65rem;
+    }
+
+    footer {
+      padding: 2rem 1rem 1rem;
+    }
+  }
+
+  /* ══ DESKTOP: Restore Orbital Animations ══ */
+  @media (min-width: 1024px) {
+    .float-card-1 {
+      width: 260px !important;
+      height: 340px !important;
+      animation: entrance-1 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-1 8.5s linear infinite 1s !important;
+    }
+
+    .float-card-2 {
+      width: 240px !important;
+      height: 320px !important;
+      animation: entrance-2 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-2 9.2s linear infinite 1.1s !important;
+    }
+
+    .float-card-3 {
+      width: 300px !important;
+      height: 380px !important;
+      animation: entrance-3 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-3 7.8s linear infinite 0.9s !important;
+    }
+
+    .float-card-4 {
+      width: 400px !important;
+      height: 330px !important;
+      animation: entrance-4 1.15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-4 8.8s linear infinite 1.15s !important;
+    }
+
+    .float-card-5 {
+      width: 350px !important;
+      height: 280px !important;
+      animation: entrance-5 1.05s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, orbit-5 8.4s linear infinite 1.05s !important;
+    }
+
+    .hero-right {
+      display: flex;
+      min-height: auto;
     }
   }
 </style>
@@ -2883,45 +3171,46 @@
 </section>
 
 <!-- ══ FOOTER ══ -->
-<footer id="contact">
+<footer id="contact" role="contentinfo" aria-label="Site footer">
   <div class="footer-top">
     <div class="footer-brand">
       <span class="name">Boho Studio</span>
       <span class="sub">Guwahati · Riverside Celebrations</span>
-      <p>A carefully designed private space in the heart of Guwahati.</p>
+      <p>A carefully designed private space in the heart of Guwahati dedicated to creating memorable experiences.</p>
     </div>
-    <div class="footer-col">
-      <h4>Check In / Out</h4>
-      <div class="checkin-checkout">
-        <div class="time-card">
+    
+    <div class="footer-col" role="region" aria-labelledby="checkin-label">
+      <h4 id="checkin-label">Check In / Out</h4>
+      <div class="checkin-checkout" aria-label="Check-in and check-out times">
+        <div class="time-card" role="doc-tip" aria-label="Check-in time">
           <div class="time-card-label">Check In</div>
-          <div class="time-card-time">12:00 PM</div>
+          <time class="time-card-time" datetime="12:00">12:00 PM</time>
         </div>
-        <div class="time-card">
+        <div class="time-card" role="doc-tip" aria-label="Check-out time">
           <div class="time-card-label">Check Out</div>
-          <div class="time-card-time">11:00 AM</div>
+          <time class="time-card-time" datetime="11:00">11:00 AM</time>
         </div>
       </div>
     </div>
   
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
-        <li><a href="mailto:hello@bohostudio.in">hello@bohostudio.in</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">WhatsApp us</a></li>
+    <div class="footer-col" role="region" aria-labelledby="connect-label">
+      <h4 id="connect-label">Connect</h4>
+      <ul role="list" aria-label="Contact information">
+        <li><a href="tel:+919876543210" aria-label="Call us at +91 98765 43210">+91 98765 43210</a></li>
+        <li><a href="mailto:hello@bohostudio.in" aria-label="Email us at hello@bohostudio.in">hello@bohostudio.in</a></li>
+        <li><a href="#" aria-label="Follow us on Instagram" rel="external noopener noreferrer">Instagram</a></li>
+        <li><a href="#" aria-label="Message us on WhatsApp" rel="external noopener noreferrer">WhatsApp us</a></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <span>© 2025 Boho Studio. Crafted with ♥ for wanderers.</span>
-    <div class="social-links">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">Google</a>
-    </div>
+    <span role="doc-copyright">&copy; 2025 Boho Studio. Crafted with ♥ for wanderers.</span>
+    <nav class="social-links" aria-label="Social media links">
+      <a href="#" aria-label="Visit our Instagram profile" rel="external noopener noreferrer">Instagram</a>
+      <a href="#" aria-label="Visit our Facebook page" rel="external noopener noreferrer">Facebook</a>
+      <a href="#" aria-label="View on Google" rel="external noopener noreferrer">Google</a>
+    </nav>
   </div>
 </footer>
 
