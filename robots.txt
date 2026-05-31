@@ -1,0 +1,8 @@
+User-agent: *
+Disallow:
+
+# Sitemap
+Sitemap: https://www.bohostudiostay.in/sitemap.xml
+
+# If needed, add Crawl-delay
+# Crawl-delay: 10
